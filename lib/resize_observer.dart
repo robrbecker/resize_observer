@@ -11,16 +11,16 @@ abstract class ResizeObserver {
 
   static final JsObject _resizeObserver = _initResizeObserver();
 
-  static Map<Element, ResizeObserverCallback> _callbackMap = <Element, ResizeObserverCallback>{};
+  static final Map<Element, ResizeObserverCallback> _callbackMap = <Element, ResizeObserverCallback>{};
 
   static JsObject _initResizeObserver() {
     if (supported) {
-      return new JsObject(context['ResizeObserver'], [_dispatchResizes]);
+      return new JsObject(context['ResizeObserver'], <dynamic>[_dispatchResizes]);
     }
     return null;
   }
 
-  static void _dispatchResizes(JsArray entries, JsObject jsResizeObserver) {
+  static void _dispatchResizes(JsArray<JsObject> entries, JsObject jsResizeObserver) {
     if (entries == null) {
       return;
     }
@@ -43,18 +43,18 @@ abstract class ResizeObserver {
   }
 
   /// Start observing an [element] for resizes
-  static void observe(Element el, ResizeObserverCallback callback) {
-    _callbackMap[el] = callback;
+  static void observe(Element element, ResizeObserverCallback callback) {
+    _callbackMap[element] = callback;
     if (_resizeObserver != null) {
-      _resizeObserver.callMethod('observe', [el]);
+      _resizeObserver.callMethod('observe', <dynamic>[element]);
     }
   }
 
   /// Stop observing resizes to [element]
-  static void unobserve(Element el) {
-    _callbackMap.remove(el);
+  static void unobserve(Element element) {
+    _callbackMap.remove(element);
     if (_resizeObserver != null) {
-      _resizeObserver.callMethod('unobserve', [el]);
+      _resizeObserver.callMethod('unobserve', <dynamic>[element]);
     }
   }
 }
