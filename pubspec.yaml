@@ -1,0 +1,20 @@
+name: 'resize_observer'
+version: 1.0.0
+description: A Dart wrapper for the ResizeObserver API
+author: Rob Becker <rob.becker@gmail.com>
+homepage: https://github.com/robrbecker/resize_observer
+
+environment:
+  sdk: '>=1.22.1 <2.0.0'
+
+web:
+  compiler:
+    debug: dartdevc
+
+dev_dependencies:
+  browser: ^0.10.0
+
+transformers:
+- $dart2js:
+    sourceMaps: true
+    minify: false
