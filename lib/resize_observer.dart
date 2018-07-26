@@ -2,7 +2,8 @@ import 'dart:html';
 import 'dart:js';
 
 /// A callback for ResizeObserver must conform to this signature
-typedef void ResizeObserverCallback(Element element, num x, num y, num width, num height, num top, num bottom, num left, num right);
+typedef void ResizeObserverCallback(Element element, num x, num y, num width,
+    num height, num top, num bottom, num left, num right);
 
 /// Resize Observer
 abstract class ResizeObserver {
@@ -11,22 +12,25 @@ abstract class ResizeObserver {
 
   static final JsObject _resizeObserver = _initResizeObserver();
 
-  static final Map<Element, ResizeObserverCallback> _callbackMap = <Element, ResizeObserverCallback>{};
+  static final Map<Element, ResizeObserverCallback> _callbackMap =
+      <Element, ResizeObserverCallback>{};
 
   static JsObject _initResizeObserver() {
     if (supported) {
-      return new JsObject(context['ResizeObserver'], <dynamic>[_dispatchResizes]);
+      return new JsObject(
+          context['ResizeObserver'], <dynamic>[_dispatchResizes]);
     }
     return null;
   }
 
-  static void _dispatchResizes(JsArray<JsObject> entries, JsObject jsResizeObserver) {
+  static void _dispatchResizes(
+      JsArray<JsObject> entries, JsObject jsResizeObserver) {
     if (entries == null) {
       return;
     }
     for (JsObject entry in entries) {
       Element target = entry['target'];
-      
+
       if (!document.contains(target)) {
         ResizeObserver.unobserve(target);
         return;
@@ -36,7 +40,8 @@ abstract class ResizeObserver {
       if (target != null && callback != null) {
         JsObject rect = entry['contentRect'];
         if (rect != null) {
-          callback(target, rect['x'],rect['y'],rect['width'],rect['height'],rect['top'],rect['bottom'],rect['left'],rect['right']);
+          callback(target, rect['x'], rect['y'], rect['width'], rect['height'],
+              rect['top'], rect['bottom'], rect['left'], rect['right']);
         }
       }
     }

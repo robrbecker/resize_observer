@@ -1,5 +1,8 @@
 # resize_observer
-A Dart wrapper for the Resize Observer API
+A Dart wrapper for the Resize Observer API that uses JS interop.
+It works under both Dart 1 and 2 but since it now exists in the dart:html package
+in Dart 2, I would recommend just using the built in one under Dart 2
+and this version under Dart 1.
 
 # API
 ```
@@ -17,4 +20,4 @@ ResizeObserver.unobserve(Element element);
 typedef void ResizeObserverCallback(Element element, num x, num y, num width, num height, num top, num bottom, num left, num right);
 ```
 
-See [the example](https://github.com/robrbecker/resize_observer/blob/master/example/index.dart) for an example of how to use it.
+See [the example](https://github.com/robrbecker/resize_observer/blob/master/example/main.dart) for an example of how to use it.
