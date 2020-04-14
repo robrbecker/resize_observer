@@ -24,24 +24,26 @@ abstract class ResizeObserver {
   }
 
   static void _dispatchResizes(
-      JsArray<JsObject> entries, JsObject jsResizeObserver) {
+      JsArray<dynamic> entries, JsObject jsResizeObserver) {
     if (entries == null) {
       return;
     }
-    for (JsObject entry in entries) {
-      Element target = entry['target'];
+    for (dynamic entry in entries) {
+      if (entry is JsObject) {
+        Element target = entry['target'];
 
-      if (!document.contains(target)) {
-        ResizeObserver.unobserve(target);
-        return;
-      }
+        if (!document.contains(target)) {
+          ResizeObserver.unobserve(target);
+          return;
+        }
 
-      ResizeObserverCallback callback = _callbackMap[target];
-      if (target != null && callback != null) {
-        JsObject rect = entry['contentRect'];
-        if (rect != null) {
-          callback(target, rect['x'], rect['y'], rect['width'], rect['height'],
-              rect['top'], rect['bottom'], rect['left'], rect['right']);
+        ResizeObserverCallback callback = _callbackMap[target];
+        if (target != null && callback != null) {
+          JsObject rect = entry['contentRect'];
+          if (rect != null) {
+            callback(target, rect['x'], rect['y'], rect['width'], rect['height'],
+                rect['top'], rect['bottom'], rect['left'], rect['right']);
+          }
         }
       }
     }
