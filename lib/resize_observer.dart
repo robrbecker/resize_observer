@@ -17,7 +17,7 @@ abstract class ResizeObserver {
 
   static JsObject? _initResizeObserver() {
     if (supported) {
-      return new JsObject(
+      return JsObject(
           context['ResizeObserver'], <dynamic>[_dispatchResizes]);
     }
     return null;
