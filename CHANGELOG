@@ -1,12 +1,16 @@
-# 1.0.2
+## 1.1.0-nullsafety.0
 
-Fixed runtime error https://github.com/robrbecker/resize_observer/issues/2
+- Migrated to null safety
 
-# 1.0.1
+## 1.0.2
 
-Updated for Dart 2 compatibility and pub score improvements
+- Fixed runtime error https://github.com/robrbecker/resize_observer/issues/2
 
-# 1.0.0 
+## 1.0.1
 
-Initial release for Dart 1
+- Updated for Dart 2 compatibility and pub score improvements
+
+## 1.0.0 
+
+- Initial release for Dart 1
 

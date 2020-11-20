@@ -5,22 +5,22 @@ import 'package:resize_observer/resize_observer.dart' as ro;
 
 bool observing = true;
 
-Future<Null> main() async {
-  Element textarea = document.getElementById('textarea');
-  Element obsEl = document.getElementById('observing');
+Future<void> main() async {
+  Element textarea = document.getElementById('textarea')!;
+  Element obsEl = document.getElementById('observing')!;
 
   ro.ResizeObserver.observe(textarea, _onResize);
   obsEl.innerHtml = observing.toString();
 
-  document.getElementById('supported').innerHtml =
+  document.getElementById('supported')!.innerHtml =
       ro.ResizeObserver.supported.toString();
 
-  document.getElementById('observeBtn').onClick.listen((_) {
+  document.getElementById('observeBtn')!.onClick.listen((_) {
     ro.ResizeObserver.observe(textarea, _onResize);
     observing = true;
     obsEl.innerHtml = observing.toString();
   });
-  document.getElementById('unobserveBtn').onClick.listen((_) {
+  document.getElementById('unobserveBtn')!.onClick.listen((_) {
     ro.ResizeObserver.unobserve(textarea);
     observing = false;
     obsEl.innerHtml = observing.toString();

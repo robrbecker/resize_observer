@@ -1,5 +1,4 @@
 analyzer:
-  strong-mode: true
 
 # ALL lint rules are included and the ones not in use are commented
 # out with a reason. An up to date list of all options is here
@@ -134,9 +133,6 @@ linter:
 
     # Style: Sort unnamed constructor declarations first
     - sort_unnamed_constructors_first
-
-    # Style: Place the super() call last in a constructor initialization list.
-    - super_goes_last
 
     # Error: Test type arguments in operator ==(Object other).
     - test_types_in_equals
