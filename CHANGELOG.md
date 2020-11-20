@@ -1,3 +1,7 @@
+## 1.1.0-nullsafety.1
+
+- fix pub score and tweak pub details
+
 ## 1.1.0-nullsafety.0
 
 - Migrated to null safety
