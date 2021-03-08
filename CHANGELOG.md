@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Stable release w/ null safety for Dart 2.12+
+
 ## 1.1.0-nullsafety.1
 
 - fix pub score and tweak pub details

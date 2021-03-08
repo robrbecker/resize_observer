@@ -6,8 +6,8 @@ import 'package:resize_observer/resize_observer.dart' as ro;
 bool observing = true;
 
 Future<void> main() async {
-  Element textarea = document.getElementById('textarea')!;
-  Element obsEl = document.getElementById('observing')!;
+  final textarea = document.getElementById('textarea')!;
+  final obsEl = document.getElementById('observing')!;
 
   ro.ResizeObserver.observe(textarea, _onResize);
   obsEl.innerHtml = observing.toString();

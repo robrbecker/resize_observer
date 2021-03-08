@@ -2,8 +2,8 @@ import 'dart:html';
 import 'dart:js';
 
 /// A callback for ResizeObserver must conform to this signature
-typedef void ResizeObserverCallback(Element element, num x, num y, num width,
-    num height, num top, num bottom, num left, num right);
+typedef ResizeObserverCallback = void Function(Element element, num x, num y,
+    num width, num height, num top, num bottom, num left, num right);
 
 /// Resize Observer
 abstract class ResizeObserver {
@@ -17,8 +17,7 @@ abstract class ResizeObserver {
 
   static JsObject? _initResizeObserver() {
     if (supported) {
-      return JsObject(
-          context['ResizeObserver'], <dynamic>[_dispatchResizes]);
+      return JsObject(context['ResizeObserver'], <dynamic>[_dispatchResizes]);
     }
     return null;
   }
@@ -34,7 +33,7 @@ abstract class ResizeObserver {
           return;
         }
 
-        ResizeObserverCallback? callback = _callbackMap[target!];
+        var callback = _callbackMap[target!];
         if (callback != null) {
           JsObject? rect = entry['contentRect'];
           if (rect != null) {
